@@ -16,7 +16,7 @@ class MyXmlParser {
         $this->results = [];
         $str = file_get_contents($this->filePath);
         preg_match_all('/<modification name="(.*?)"/m', $str, $matches, PREG_SET_ORDER, 0);
-        foreach($matches as $match) {
+        foreach ($matches as $match) {
             $this->results[] = $match[1];
         }
         return $this->getResult();
@@ -28,8 +28,7 @@ class MyXmlParser {
         $xml = simplexml_load_file($this->filePath);
         $modifications = $xml->xpath("//modification");
         
-        foreach($modifications as $modification)
-        {
+        foreach ($modifications as $modification) {
             $this->results[] = $modification->attributes()->name; 
         }
         return $this->getResult();
